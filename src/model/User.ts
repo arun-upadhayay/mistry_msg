@@ -1,14 +1,14 @@
 
 import mongoose, { Schema, Document } from "mongoose";
-import { Content } from "next/font/google";
+
 
 export interface Message extends Document {
-  Content: String;
+  content: String;
   createdAt: Date;
 }
 
 const MessageSchema: Schema<Message> = new Schema({
-  Content: {
+  content: {
     type: String,
     required: true,
   },
@@ -29,7 +29,7 @@ export interface User extends Document {
   isVerified: boolean;
 
   isAcceptingMessage: boolean;
-  Messages: Message[];
+   messages: Message[];
 }
 const UserSchema: Schema<User> = new Schema({
   username: {
@@ -70,7 +70,7 @@ const UserSchema: Schema<User> = new Schema({
     type: Date,
     default: Date.now,
   },
-  Messages: [MessageSchema],
+  messages: [MessageSchema],
 //   Messages:{
 //     type: Schema.Types.ObjectId,
 //     ref: "Message",
